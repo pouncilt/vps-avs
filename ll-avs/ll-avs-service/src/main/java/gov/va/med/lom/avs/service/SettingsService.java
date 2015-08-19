@@ -124,6 +124,9 @@ public interface SettingsService extends BaseService {
 	public abstract void saveUsageLog(UsageLog usageLog);
     public void saveUsageLog(String facilityNo, String userDuz, String patientDfn, String locationIens,String locationNames,
                              String dateTime, String action, String data, String serverName);
+
+
+
     public abstract ServiceResponse<UsageLog> getLatestUserActivity(String stationNo, String userDuz, Date date);
   public abstract ServiceResponse<LinkedHashMap<String, Integer>> getServerUsageSummary(Date date);
 	

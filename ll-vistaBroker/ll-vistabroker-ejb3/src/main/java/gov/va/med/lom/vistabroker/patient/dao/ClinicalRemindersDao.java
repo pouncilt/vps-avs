@@ -46,13 +46,13 @@ public class ClinicalRemindersDao extends BaseDao {
     return clinicalReminders;
   }*/ 
   
-  public String getClinicalReminderDetails(String dfn, String ien) throws Exception {
+/*  public String getClinicalReminderDetails(String dfn, String ien) throws Exception {
     //setDefaultContext("OR CPRS GUI CHART");
     setDefaultContext("VPS AVS INTERFACE");
     //setDefaultRpcName("ORQQPXRM REMINDER DETAIL");
     setDefaultRpcName("VPS REMINDER DETAIL");
     String[] params = {dfn, ien};
     return sCall(params);
-  }
+  }*/
   
 }

@@ -26,8 +26,8 @@ public class MedicationsDao extends BaseDao {
   public List<Medication> getMedications(String dfn) throws Exception {
     //setDefaultContext("OR CPRS GUI CHART");
     setDefaultContext("VPS AVS INTERFACE");
-    //setDefaultRpcName("ORWPS ACTIVE");
-    setDefaultRpcName("VPS MED ACTIVE");
+    setDefaultRpcName("ORWPS ACTIVE");
+    //setDefaultRpcName("VPS MED ACTIVE");
     //{ Pieces: Typ^PharmID^Drug^InfRate^StopDt^RefRem^TotDose^UnitDose^OrderID^Status^LastFill  }
     List<String> list = lCall(dfn);
     List<Medication> medications = new ArrayList<Medication>();

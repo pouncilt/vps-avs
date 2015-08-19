@@ -177,7 +177,8 @@ public class OrdersDao extends BaseDao {
    //setDefaultContext("OR CPRS GUI CHART");
     setDefaultContext("VPS AVS INTERFACE");
     //setDefaultRpcName("ORWOR VWGET");
-    setDefaultRpcName("VPS VWGET");
+    //setDefaultRpcName("VPS VWGET");
+    setDefaultRpcName("ORWOR VWGET");
     String x = sCall();
     OrderView orderView = new OrderView();
     orderView.setChanged(false);
@@ -406,9 +407,10 @@ public class OrdersDao extends BaseDao {
       }
       
      // setDefaultContext("OR CPRS GUI CHART");
-      //setDefaultRpcName("ORWORDG MAPSEQ");
       setDefaultContext("VPS AVS INTERFACE");
-      setDefaultRpcName("VPS MAPSEQ");
+      setDefaultRpcName("ORWORDG MAPSEQ");
+      
+      //setDefaultRpcName("VPS MAPSEQ");
       dGroup = lCall();  
       dGroupMap.put(getDivision(), dGroup);
       return dGroup;
@@ -588,7 +590,8 @@ public class OrdersDao extends BaseDao {
       //setDefaultContext("OR CPRS GUI CHART");
      // setDefaultRpcName("ORWORR GET4LST");  
       setDefaultContext("VPS AVS INTERFACE");
-      setDefaultRpcName("VPS GET4LST");   
+      //setDefaultRpcName("VPS GET4LST");   
+      setDefaultRpcName("ORWORR GET4LST");
       Object[] params = {String.valueOf(ordersInfoList.getTextView()), 
               String.valueOf(ordersInfoList.getFmDatetime()), idList};
 
