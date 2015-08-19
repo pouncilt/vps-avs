@@ -121,8 +121,8 @@ public interface SettingsService extends BaseService {
   public abstract CollectionServiceResponse<FacilityHealthFactor> getHealthFactorsByType(String facilityNo, String type);
   
 	// USAGE LOG
-	public abstract void saveUsageLog(UsageLog usageLog);
-    public void saveUsageLog(String facilityNo, String userDuz, String patientDfn, String locationIens,String locationNames,
+  public abstract void saveUsageLog(UsageLog usageLog);
+  public void saveUsageLog(String facilityNo, String userDuz, String patientDfn, String locationIens,String locationNames,
                              String dateTime, String action, String data, String serverName);
 
 
