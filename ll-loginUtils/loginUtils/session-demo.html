@@ -1,0 +1,105 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="Wed, 30 Apr 1980 08:01:00 GMT" />
+    <meta http-equiv="Pragma" content="No-Cache" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+
+    <title>LoginUtils AJAX-ified KaaJee Session Demo</title>
+
+    <link rel="stylesheet" type="text/css" href="/ext/4/resources/css/ext-all.css" /> 
+    <style type="text/css">
+        /* These styles are only necessary for the nifty little header bar used in
+           this example, and are not part of LLVA.Session. */
+        #header {
+            background: #7F99BE url(/reportutils/images/hd-bg.gif) repeat-x center;
+            font-family: Tahoma,Verdana,Helvetica,sans-serif;
+        }
+        #header .title {
+            font-size: 16px;
+            color: #fff;
+            font-weight: bold;
+            padding: 5px 10px;
+            text-align: left;
+        }
+        #header .user {
+            font-size: 14px;
+            color: #fff;durk6385    
+            font-weight: normal;
+            float:right;
+            padding: 5px 10px;
+            display: none;
+        }    
+        .user a, a:link {
+            text-decoration: none;
+            color: #FCB100;
+        }
+        .user a:visited {
+            color: #FCB100;
+        }
+        .user a:hover {
+            text-decoration: underline;
+        }
+        .user a:active {
+            color: #FCB100;
+            text-decoration: underline;
+        }
+            
+    </style>
+
+    <!-- LLVA.Session uses Extjs-4.  There are only two additional dependencies,
+         utils.js for some date manipulation convenience, and session.js. -->
+    <script type="text/javascript" src="/ext/4/ext-all-debug.js"></script>
+    <script type="text/javascript" src="/loginutils/js/session.js"></script>
+
+    <script type="text/javascript">
+
+        // Function to be called upon successful login
+        var demoCallback = function() {
+
+            new Ext.Viewport({
+                layout: 'border',
+                items: [{
+                    region: 'north',
+                    border: false,
+                    html: {tag: 'div', id: 'header', children: [
+                        {tag: 'div', id: 'loginInfo', 'class': 'user'},
+                        {tag: 'div', 'class': 'title', html: 'JsonUtils Session Demo'}
+                    ]}
+                }, {
+                    region: 'center',
+                    border: false,
+                    bodyStyle: 'padding:20px',
+                    html: {tag: 'div', children: [
+                        {tag: 'div', html: 'Logged in!'}
+                    ]}
+                }]
+            });
+
+            // Just for fun, let's populate that header bar with some useful login-related parameters.
+            var user = LLVA.Session.user;
+            var tpl = new Ext.Template('Logged in as {userName} ({facilityName}) | <a href="javascript:LLVA.Session.logout()">Logout</a>');
+            tpl.overwrite('loginInfo', {
+                userName: user.get('userServiceSection'), 
+                facilityName: user.get('divisionName')
+            });
+            Ext.fly('loginInfo').show();
+        };
+
+        // Override the default AJAX URLs as needed.
+        LLVA.Session.urls.userInfo =   '/cp/w/s/user/userInfo.action';
+        LLVA.Session.urls.facilities = '/cp/w/login/stations.action';
+        LLVA.Session.urls.login =      '/cp/w/login/LoginController';
+        LLVA.Session.urls.logout =     '/cp/w/login/logout.action';
+        
+        // All ready to go!  Just fire away LLVA.Sesion.init() after the page is finished loading.
+        Ext.onReady(function() {
+            LLVA.Session.init(demoCallback);
+        });
+    </script>   
+
+</head>
+<body>
+    <!--  Nothing needed here, since we're using Ext's Viewport object in this demo. -->
+</body>
+</html>

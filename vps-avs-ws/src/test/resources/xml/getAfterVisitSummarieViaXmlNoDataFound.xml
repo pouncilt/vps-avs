@@ -1,0 +1,16 @@
+Request:
+curl -k -i -X GET -H "Content-Type: application/xml" -H "Accepts: application/xml" -d '<AfterVisitSummarySearchRequest><afterVisitSummarySearchCriteria><clientId>12345</clientId><veteranId>18</veteranId><startDate>2015-02-01</startDate><endDate>2015-02-28</endDate></afterVisitSummarySearchCriteria></AfterVisitSummarySearchRequest>' "http://localhost:8080/vps-avs-ws/service/afterVisitSummaries.xml?clientId=12345&veteranId=18"
+
+Response:
+Response Header:
+
+Response Body:
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<WebServiceResponse>
+    <status>
+        <messages>
+            <message>No AVS Image found for the given date range</message>
+        </messages>
+        <requestStatus>Successful</requestStatus>
+    </status>
+</WebServiceResponse>

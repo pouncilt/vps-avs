@@ -1,0 +1,120 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<jaxb-intros xmlns="http://www.jboss.org/xsd/jaxb/intros"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.jboss.org/xsd/jaxb/intros http://anonsvn.jboss.org/repos/jbossws/projects/jaxbintros/trunk/src/main/resources/jaxb-intros.xsd">
+
+    <!--<XmlJavaTypeAdapter value="com.pouncilt.pricing.model.jaxb.adapters.DivisionPricingLabelCountMapAdapter"/>-->
+
+
+    <Class name="gov.va.med.avs.model.WebServiceResponse">
+        <XmlAccessorType value="FIELD"/>
+        <XmlType propOrder="{'status','payload'}" ></XmlType>
+        <XmlRootElement name="WebServiceResponse"/>
+        <Field name="status">
+            <XmlElement name="status" required="true"/>
+        </Field>
+        <Field name="payload">
+            <XmlElement name="payload" required="true"/>
+        </Field>
+    </Class>
+
+    <Class name="gov.va.med.avs.model.WebServiceCollectionResponse">
+        <XmlAccessorType value="FIELD"/>
+        <XmlType propOrder="{'status','payload'}" ></XmlType>
+        <XmlRootElement name="WebServiceCollectionResponse"/>
+        <Field name="status">
+            <XmlElement name="status" required="true"/>
+        </Field>
+        <Field name="payload">
+            <XmlElement name="payload" required="true"/>
+        </Field>
+    </Class>
+
+    <Class name="gov.va.med.avs.model.WebServiceResponseStatus">
+        <XmlAccessorType value="FIELD"/>
+        <XmlType propOrder="{'messages', 'requestStatus'}"/>
+        <Field name="messages">
+            <XmlElement name="message" />
+            <XmlElementWrapper name="messages" required="true"/>
+        </Field>
+        <Field name="requestStatus">
+            <XmlElement name="requestStatus" />
+        </Field>
+    </Class>
+
+    <Class name="gov.va.med.avs.model.WebServicePayload">
+        <XmlAccessorType value="FIELD"/>
+        <XmlType propOrder="{'afterVisitSummary'}"/>
+        <Field name="afterVisitSummary">
+            <XmlElement name="afterVisitSummary"/>
+        </Field>
+    </Class>
+
+    <Class name="gov.va.med.avs.model.WebServiceCollectionPayload">
+        <XmlAccessorType value="FIELD"/>
+        <XmlType propOrder="{'afterVisitSummaries'}"/>
+        <Field name="afterVisitSummaries">
+            <XmlElement name="afterVisitSummary"/>
+            <XmlElementWrapper name="afterVisitSummaries" required="true"/>
+        </Field>
+    </Class>
+
+    <Class name="gov.va.med.avs.model.AfterVisitSummarySearchRequest">
+        <XmlAccessorType value="FIELD"/>
+        <XmlType propOrder="{'afterVisitSummarySearchCriteria'}"></XmlType>
+        <XmlRootElement name="AfterVisitSummarySearchRequest"/>
+        <Field name="afterVisitSummarySearchCriteria">
+            <XmlElement name="afterVisitSummarySearchCriteria" required="true"/>
+        </Field>
+    </Class>
+
+    <Class name="gov.va.med.avs.model.AfterVisitSummarySearchCriteria">
+        <XmlAccessorType value="FIELD"/>
+        <XmlType propOrder="{'clientId','veteranId', 'startDate', 'endDate'}" ></XmlType>
+        <Field name="clientId">
+            <XmlElement name="clientId" required="true"/>
+        </Field>
+        <Field name="veteranId">
+            <XmlElement name="veteranId" required="true"/>
+        </Field>
+        <Field name="startDate">
+            <XmlElement name="startDate" required="true"/>
+            <XmlJavaTypeAdapter value="gov.va.med.avs.model.jaxb.adapter.DateAdapter"/>
+        </Field>
+        <Field name="endDate">
+            <XmlElement name="endDate" required="true"/>
+            <XmlJavaTypeAdapter value="gov.va.med.avs.model.jaxb.adapter.DateAdapter"/>
+        </Field>
+    </Class>
+    <Class name="gov.va.med.avs.model.AfterVisitSummary">
+        <XmlAccessorType value="FIELD"/>
+        <XmlType propOrder="{'id', 'veteranId', 'fileName', 'description', 'createdBy', 'createdDate', 'binaryPDF'}"/>
+        <XmlRootElement name="AfterVisitSummary"/>
+        <Field name="id">
+            <XmlElement name="id" required="true"/>
+        </Field>
+        <Field name="veteranId">
+            <XmlElement name="veteranId" required="true"/>
+        </Field>
+        <Field name="fileName">
+            <XmlElement name="fileName" required="true"/>
+        </Field>
+        <Field name="description">
+            <XmlElement name="description" required="true"/>
+        </Field>
+        <Field name="createdBy">
+            <XmlElement name="createdBy" required="true"/>
+        </Field>
+        <Field name="createdDate">
+            <XmlElement name="createdDate" required="true"/>
+            <XmlJavaTypeAdapter value="gov.va.med.avs.model.jaxb.adapter.DateTimeAdapter"/>
+        </Field>
+        <Field name="binaryPDF">
+            <XmlElement name="base64EncodedPDF"/>
+        </Field>
+        <Field name="doComprehensiveValidation">
+            <XmlTransient/>
+        </Field>
+    </Class>
+</jaxb-intros>

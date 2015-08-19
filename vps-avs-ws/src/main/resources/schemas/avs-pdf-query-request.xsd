@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="AfterVisitSummarySearchRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="afterVisitSummarySearchCriteria">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="clientId" type="xs:string"/>
+                            <xs:element name="veteranId" type="xs:string"/>
+                            <xs:element name="startDate" type="xs:date"/>
+                            <xs:element name="endDate" type="xs:date"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AfterVisitSummary">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+                <xs:element name="veteranId" type="xs:string"/>
+                <xs:element name="fileName" type="xs:string"/>
+                <xs:element name="description" type="xs:string" nillable="true" minOccurs="0" />
+                <xs:element name="createdBy" type="xs:string"/>
+                <xs:element name="createdDate" type="xs:dateTime"/>
+                <xs:element name="base64EncodedPDF" type="xs:base64Binary" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="WebServiceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="messages" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="message" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="requestStatus">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="Failure"/>
+                                        <xs:enumeration value="Successful"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="payload" nillable="true" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="afterVisitSummary" nillable="true" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:string"/>
+                                        <xs:element name="veteranId" type="xs:string"/>
+                                        <xs:element name="fileName" type="xs:string"/>
+                                        <xs:element name="description" type="xs:string" nillable="true" minOccurs="0" />
+                                        <xs:element name="createdBy" type="xs:string"/>
+                                        <xs:element name="createdDate" type="xs:dateTime"/>
+                                        <xs:element name="base64EncodedPDF" type="xs:base64Binary" minOccurs="0" maxOccurs="1"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="WebServiceCollectionResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="messages" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="message" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="requestStatus">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="Failure"/>
+                                        <xs:enumeration value="Successful"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="payload" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="afterVisitSummaries" nillable="true" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="afterVisitSummary" minOccurs="1" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="id" type="xs:string"/>
+                                                    <xs:element name="veteranId" type="xs:string"/>
+                                                    <xs:element name="fileName" type="xs:string"/>
+                                                    <xs:element name="description" type="xs:string" nillable="true" minOccurs="0" />
+                                                    <xs:element name="createdBy" type="xs:string"/>
+                                                    <xs:element name="createdDate" type="xs:dateTime"/>
+                                                    <xs:element name="base64EncodedPDF" type="xs:base64Binary" minOccurs="0" maxOccurs="1"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

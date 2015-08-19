@@ -1,0 +1,4 @@
+{"success": true,"totalCount": 2,"root": [
+  "<div style=\"float:right;margin:0 0 5px 20px\">\u000a    <img src=\"../artwork/Dept_of_VA_Affairs-greyscale.png\" width=\"205\" height=\"42\"\u000a    alt=\"Department of Veterans Affairs\" />\u000a</div>\u000a<div style=\"font-size:1.8em;font-weight:bold\">Clinic Checkout Sheet</div>\u000a<div style=\"font-size:1.1em\">\u000a    %PATIENT_NAME%<br />\u000a    Visit date: %ENCOUNTER_DATE%<br />\u000a    <div style=\"font-size:0.9em\">Date generated: %CURRENT_DATETIME%</div>\u000a</div>",
+  "Access health resources.  Track your health.  Refill VA prescriptions.\u000aVisit <strong>www.myhealth.va.gov</strong>!"
+]}

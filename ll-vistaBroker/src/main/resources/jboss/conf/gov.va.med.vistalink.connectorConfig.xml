@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connectors encryptionScoped="false" xsi:noNamespaceSchemaLocation="connectorConfig.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://med.va.gov/vistalink/adapter/config">   
+
+    <!-- Test VistA -->
+    <connector jndiName="vlj/testconnector" primaryStation="050" ip="172.16.44.36" port="8001"
+            access-code="0Pe3FtzJ/fHhF7Rn60Q7bQ==" verify-code="1CGzNadpVGdrkinbWBSbrA==" encrypted="true" enabled="true"
+            always-use-default-as-min="false">
+    </connector>   
+    
+</connectors>

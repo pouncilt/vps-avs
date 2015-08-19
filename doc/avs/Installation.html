@@ -1,0 +1,120 @@
+﻿<html>
+	
+<head>
+	<title>Installation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc">
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript"><!--
+		if (top.frames.length == 0)
+		{
+			var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+			top.location.href = "avs.html?" + sTopicUrl;
+		}
+		else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+		{
+			top.FrameTOC.SelectTocItem("Installation");
+		}
+	</script>
+</head>
+
+<body>
+
+	<div id="topic_header">
+			<div id="topic_header_content">
+				<h1>Installation</h1>
+				
+				</div>
+			<div id="topic_header_nav">
+				<a href="TestingChecklist.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p class="rvps2"><span class="rvts21">AVS Installation and Configuration</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 10pt; font-family: 'Arial'; color: #000000;">1.</span>
+<span class="rvts21">Create a VistaLink Connector Proxy User Account</span></p>
+<p class="rvps2"><span class="rvts10"></span><br><span class="rvts10">AVS accesses VistA through the VistaLink application programming interface (API). &nbsp;This is a nationally developed library that allows software applications to interface with VistA through remote procedure calls (RPCs). &nbsp;In order to utilize the VistaLink API, you must set up a connector proxy user in your VistA system. &nbsp;This can be done by using the Foundations Management menu option in VistA (see the example below). &nbsp;Give your account a name between 3 and 35 characters (suggested name: &nbsp;“CONNECTOR, {VAMC}”, where {VAMC} is the abbreviation for your facility, e.g. LOM). &nbsp;You will need to provide the AVS server administrator with the access and verify codes of the connector proxy user account along with the VistaLink server IP and port number (see Welcome page under Introduction section for contact information).</span><br><span class="rvts10"></span><br><span class="rvts10">Please see the VistaLink Systems Management Guide, section 8.6 titled “Creating Connector Proxy Users for J2EE Systems” for more information on how to create a connector proxy user in your VistA system.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><a class="rvts23" href="http://www.va.gov/vdl/documents/Infrastructure/VistALink/vistalink_1_6_sm.pdf" target="_blank">http://www.va.gov/vdl/documents/Infrastructure/VistALink/vistalink_1_6_sm.pdf</a></p>
+<p class="rvps2"><span class="rvts10"></span><br><span class="rvts10"><br></span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 10pt; font-family: 'Arial'; color: #000000;">2.</span>
+<span class="rvts21">Create a TIU note title (for note auto-generation) and provide IEN.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10">The Title TIU note is used by AVS for automated stub note creation and VistA Imaging uploads. &nbsp;The note title IEN must be provided to the AVS administrator (see Welcome page under Introduction section for contact information).</span><br><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 10pt; font-family: 'Arial'; color: #000000;">3.</span>
+<span class="rvts21">Install KIDS file for creation of application proxy.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10">The KIDS file creates an application proxy which allows the AVS to call certain Remote Procedure Calls (RPCs) without the need for a VistA service account.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts21">Note:</span><span class="rvts10"> &nbsp;This step is not yet required. &nbsp;In lieu of the application proxy, please create a VistA service account with access to the OR CPRS GUI CHART and DVBA CAPRI GUI menu options and provide the DUZ to the AVS server administrator.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 10pt; font-family: 'Arial'; color: #000000;">4.</span>
+<span class="rvts21">Install Windows client on network share accessible to all CPRS users.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10">The Windows client provides CCOW support for the AVS for automatic patient-context switching in sync with CPRS. &nbsp;The client can be downloaded from the following page: &nbsp;</span><a class="rvts23" href="http://r01dvrcom14.r01.med.va.gov/avs/software" target="_blank">http://r01dvrcom14.r01.med.va.gov/avs/software</a><br><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 10pt; font-family: 'Arial'; color: #000000;">5.</span>
+<span class="rvts21">Set up a shortcut on the CPRS Tools menu pointing to the Windows client in Step 4.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10">The CPRS Tools menu shortcut should be configured as follows:</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts22">After Visit Summary={NETWORK_SHARE}\WebClient.exe title="After Visit Summary" stationNo="{STN}" userDuz="%DUZ" patientDfn="%DFN" url=http://r01dvrcom14.r01.med.va.gov/checkout/wizard/index.html</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 12pt; font-family: 'Arial Unicode MS', 'Lucida Sans Unicode', 'Arial'; color: #000000;">●</span>
+<span class="rvts10">{NETWORK_SHARE} is the path of the network folder where the Windows client is installed (step #4 above).</span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 12pt; font-family: 'Arial Unicode MS', 'Lucida Sans Unicode', 'Arial'; color: #000000;">●</span>
+<span class="rvts10">{STN} is the station number.</span><br><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 10pt; font-family: 'Arial'; color: #000000;">6.</span>
+<span class="rvts21">Create a user class called "AVS ADMINISTRATOR" and assign to users responsible for configuring AVS for the facility.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10">User access to the AVS Admin interface, which allows for facility-wide configuration settings, is controlled by this user class. &nbsp;Only users with this user class will have access to the AVS Admin interface.</span></p>
+<p class="rvps2"><span class="rvts10"></span><br><span class="rvts10"><br></span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 10pt; font-family: 'Arial'; color: #000000;">7.</span>
+<span class="rvts21">Provide a list of CBOCs that will use the software.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10">Please provide the station/division # and name of each CBOC to the AVS server administrator.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 10pt; font-family: 'Arial'; color: #000000;">8.</span>
+<span class="rvts21">Provide a list of health factors used for tracking patient-preferred language and smoking status.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10">The AVS displays the patient’s preferred language and smoking status. &nbsp;Provide a list of the Health Factors that are set up in your VistA system that are used to store these items. &nbsp;Please see below for further details on this. &nbsp;You'll need to provide the following to the AVS server administrator:</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 12pt; font-family: 'Arial Unicode MS', 'Lucida Sans Unicode', 'Arial'; color: #000000;">●</span>
+<span class="rvts10">Internal Entry Number (IEN) and name of each of the Health Factors associated with smoking status.</span></p>
+<p class="rvps2" style="text-indent: -24px; padding-left: 24px; margin-left: 0px;"><span style="font-size: 12pt; font-family: 'Arial Unicode MS', 'Lucida Sans Unicode', 'Arial'; color: #000000;">●</span>
+<span class="rvts10">IEN and name of each Health Factor associated with patient-preferred language.</span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+<p class="rvps2"><span class="rvts10"><br></span></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				VA Loma Linda Healthcare System</div>
+		</div>
+	</body>
+	
+</html>
+

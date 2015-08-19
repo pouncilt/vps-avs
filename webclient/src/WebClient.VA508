@@ -1,0 +1,19 @@
+C:\Users\btjahjo.HARRIS\Documents\GitHub\AVS\webclient\src\WebClientForm.dfm
+1008/1180919581
+0
+2
+C:\Users\btjahjo.HARRIS\Documents\GitHub\AVS\webclient\src\GoToForm.dfm
+2250/1180919581
+2
+2
+C:\Users\btjahjo.HARRIS\Documents\GitHub\AVS\webclient\src\UserMsgForm.dfm
+1863/1180919581
+4
+2
+|EOINDEX|
+44
+object WebClientView: TWebClientView
+106
+object GoToEntry: TGoToEntry
+96
+object UserMsg: TUserMsg

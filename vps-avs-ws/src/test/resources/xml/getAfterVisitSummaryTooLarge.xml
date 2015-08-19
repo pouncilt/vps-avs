@@ -1,0 +1,23 @@
+Request:
+curl -i -X GET -H "Content-Type: application/xml"  -H "Accepts: application/xml"  -d '<AfterVisitSummary><id>193</id><veteranId>18</veteranId><fileName>ZZ000000000193</fileName><createdBy>CPRSSUPER,REG</createdBy><createdDate>2015-05-14T10:22:31</createdDate><base64EncodedPDF>null</base64EncodedPDF></AfterVisitSummary>' "http://localhost:8080/vps-avs-ws/service/afterVisitSummaries/193.xml?clientId=12345&veteranId=18"
+
+Response:
+Response Header:
+HTTP/1.1 413 Request Entity Too Large
+Server: Apache-Coyote/1.1
+X-Powered-By: Servlet/3.0; JBossAS-6
+Content-Type: application/xml
+Transfer-Encoding: chunked
+Date: Thu, 25 Jun 2015 16:35:35 GMT
+Connection: close
+
+Response Body:
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<WebServiceResponse>
+    <status>
+        <messages>
+            <message>The requested PDF is too large.</message>
+        </messages>
+        <requestStatus>Failure</requestStatus>
+    </status>
+</WebServiceResponse>

@@ -1,0 +1,142 @@
+{"success": true,"totalCount": 28,"root": [
+  {
+    "id": 1,
+    "type": 1,
+    "source": "ZZVICTORVILLE DR ISMAIL"
+  },
+  {
+    "id": 2,
+    "type": 1,
+    "source": "POST DEPLOYMENT CLINIC/AIYAR"
+  },
+  {
+    "id": 3,
+    "type": 1,
+    "source": "MODULE 5 PHARMACIST #2"
+  },
+  {
+    "id": 4,
+    "type": 1,
+    "source": "BHOST/TRS/SUPPORTIVE THERAPY V"
+  },
+  {
+    "id": 5,
+    "type": 1,
+    "source": "GIM/CASTRO/OPEN MOD 5"
+  },
+  {
+    "id": 6,
+    "type": 1,
+    "source": "ADMISSION"
+  },
+  {
+    "id": 7,
+    "type": 1,
+    "source": "MODULE 3 NURSE  ANDAYA,APRYL"
+  },
+  {
+    "id": 8,
+    "type": 1,
+    "source": "MODULE 5 NURSE"
+  },
+  {
+    "id": 9,
+    "type": 1,
+    "source": "GIM/TAN/OPEN/MODULE 5"
+  },
+  {
+    "id": 10,
+    "type": 1,
+    "source": "GIM/A GONZAGA/IC/MODULE 4"
+  },
+  {
+    "id": 11,
+    "type": 1,
+    "source": "SUN CITY CBOC DR CHONG"
+  },
+  {
+    "id": 12,
+    "type": 1,
+    "source": "3SE OBS"
+  },
+  {
+    "id": 13,
+    "type": 1,
+    "source": "PM&R  PHC/DR BULL/F CLINIC"
+  },
+  {
+    "id": 14,
+    "type": 1,
+    "source": "BHIP/PALM/PSYD/MCKELVIE/INTAKE"
+  },
+  {
+    "id": 15,
+    "type": 1,
+    "source": "OPERATING ROOM CLINIC ORDERS"
+  },
+  {
+    "id": 16,
+    "type": 1,
+    "source": "BHIP/ON-CALL(2NW)"
+  },
+  {
+    "id": 17,
+    "type": 1,
+    "source": "GIM/SKORETZ/DIGMA MOD 1"
+  },
+  {
+    "id": 18,
+    "type": 1,
+    "source": "FEE FOR SERVICE"
+  },
+  {
+    "id": 19,
+    "type": 1,
+    "source": "BHOST/MHICM/DIANA"
+  },
+  {
+    "id": 20,
+    "type": 1,
+    "source": "BHOST/SC/SIMMONS/PHD"
+  },
+  {
+    "id": 21,
+    "type": 1,
+    "source": "BHOST/TRS/WELCOME"
+  },
+  {
+    "id": 22,
+    "type": 1,
+    "source": "BHOST/TRS/SEEKING SAFETY"
+  },
+  {
+    "id": 23,
+    "type": 1,
+    "source": "BHOST/PALM/MSW/STANSBURY"
+  },
+  {
+    "id": 24,
+    "type": 1,
+    "source": "CORONA CBOC NURSING"
+  },
+  {
+    "id": 25,
+    "type": 1,
+    "source": "BHOST/PSYD/GOLDSTEIN"
+  },
+  {
+    "id": 26,
+    "type": 1,
+    "source": "GIM/A GONZAGA/MODULE 4"
+  },
+  {
+    "id": 27,
+    "type": 1,
+    "source": "SURG/NEURO/RTN/3NW1"
+  },
+  {
+    "id": 28,
+    "type": 1,
+    "source": "PREV MED WOMEN RTN"
+  }
+]}

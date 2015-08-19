@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>FusionCharts Samples</title>
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="/ext/4.1.1a/resources/css/ext-all.css" /> 
+    
+    <style type="text/css">
+
+        body {
+            font-family: Tahoma,Verdana,Helvetica,sans-serif;
+            font-size: 12px;
+        }
+        
+        .chart {
+            margin: 10px;  
+        }
+                
+    </style> 
+    
+    <!-- Scripts -->  
+    <script type="text/javascript" src="/ext/4.1.1a/ext-all.js"></script>  
+    <script type="text/javascript" src="/fusion/charts/FusionCharts.js"></script>       
+    <script type="text/javascript" src="/reportutils/js/FusionUtils.js"></script>   
+    <script type="text/javascript" src="js/json2.js"></script>       
+
+    <script type="text/javascript">       
+      
+      var fusionChart;
+      
+      function handleActivate(tab) {
+                
+          var chartUrl;
+          if (tab.getId() == 'Tab1') { 
+              chartUrl = '/reports/w/charts/sampleCol2DChart.action';
+          } else if (tab.getId() == 'Tab2') { 
+              chartUrl = '/reports/w/charts/sampleCol3DChart.action';
+          } else if (tab.getId() == 'Tab3') { 
+              chartUrl = '/reports/w/charts/sampleDoughnut3DChart.action';
+          } else if (tab.getId() == 'Tab4') { 
+              chartUrl = '/reports/w/charts/sampleLine2DChart.action';
+          } else if (tab.getId() == 'Tab5') { 
+              chartUrl = '/reports/w/charts/sampleArea2DChart.action';
+          } else if (tab.getId() == 'Tab6') { 
+              chartUrl = '/reports/w/charts/sampleBar2DChart.action';
+          } else if (tab.getId() == 'Tab7') { 
+              chartUrl = '/reports/w/charts/sampleMSCombi3DChart.action';
+          } else if (tab.getId() == 'Tab8') { 
+              chartUrl = '/reports/w/charts/sampleBubbleChart.action';
+          } else if (tab.getId() == 'Tab9') { 
+              chartUrl = '/reports/w/charts/sampleScatterChart.action';
+          } else if (tab.getId() == 'Tab10') { 
+              chartUrl = '/reports/w/charts/sampleLipidChart.action';
+          }           
+          getChartData(tab.getId(), chartUrl);
+          
+      }       
+    
+      Ext.onReady(function() {
+        
+          Ext.QuickTips.init();             
+          
+          var tabbedChart = new Ext.TabPanel({
+              activeTab: 0,
+              width: 585,
+              height: 500,
+              plain: false,
+              frame: true,
+              enableTabScroll:true,
+              defaults:{autoScroll: true, layout: 'fit'},              
+              items:[{
+                      id: 'Tab1',
+                      title: 'Sales Figures',
+                      cls: 'chart',
+                      listeners: {activate: handleActivate}
+                  },{
+                      id: 'Tab2',
+                      title: 'Top 10 Cities by Sales',
+                      cls: 'chart',
+                      listeners: {activate: handleActivate}
+                  },{
+                      id: 'Tab3',
+                      title: 'Project Cost Breakdown',
+                      cls: 'chart',
+                      listeners: {activate: handleActivate}
+                  },{
+                      id: 'Tab4',
+                      title: 'Web Statistics',
+                      cls: 'chart',
+                      listeners: {activate: handleActivate}
+                  },{
+                      id: 'Tab5',
+                      title: 'Fruit Production',
+                      cls: 'chart',
+                      listeners: {activate: handleActivate}
+                  },{
+                      id: 'Tab6',
+                      title: 'Brand Winner',
+                      cls: 'chart',
+                      listeners: {activate: handleActivate}
+                  },{
+                      id: 'Tab7',
+                      title: 'Sales',
+                      cls: 'chart',
+                      listeners: {activate: handleActivate}
+                  },{
+                      id: 'Tab8',
+                      title: 'Original Cost vs Price',
+                      cls: 'chart',
+                      listeners: {activate: handleActivate}
+                  },{
+                      id: 'Tab9',
+                      title: 'Investment Overview',
+                      cls: 'chart',
+                      listeners: {activate: handleActivate}
+                  },{
+                      id: 'Tab10',
+                      title: 'LDL and HDL Cholesterol',
+                      cls: 'chart',
+                      listeners: {activate: handleActivate}
+                  }              
+              ],
+              buttons: [{
+                 text: 'View XML', 
+                 id: 'viewXmlBtn',
+                 handler: function(b,e) {
+                     Ext.getDom('dataTextArea').value = fusionChart.getChartData('xml');                     
+                     popup.setTitle('XML Data');
+                     popup.show(this);
+                 }
+             },{
+                 text: 'View JSON', 
+                 id: 'viewJsonBtn',
+                 handler: function(b,e) {
+                     Ext.getDom('dataTextArea').value = JSON.stringify(fusionChart.getChartData('json') ,null, 2);                     
+                     popup.setTitle('JSON Data');
+                     popup.show(this);
+                 }
+             }]
+          }); 
+          
+          
+          var popup = new Ext.Window({
+                width:600,
+                height:600,
+                closeAction:'hide',
+                plain: true,
+                applyTo:'popup-win',
+                layout: 'fit',
+                items: [
+                    new Ext.FormPanel({
+                        header: false,
+                        layout: 'fit',
+                        labelWidth: 0,
+                        items: [
+                            new Ext.form.TextArea({
+                                id: 'dataTextArea',
+                                autoScroll: true,
+                                readOnly: true,
+                                style: {
+                                    fontFamily: 'courier new',
+                                    fontSize: '12px',
+                                    border: 'none'  
+                                }
+                            })
+                        ]
+                    })
+                ],               
+                buttons: [{
+                    text: 'Close',
+                    handler: function(){
+                        popup.hide();
+                    }
+                }]
+          });          
+          
+          
+          var panel = new Ext.Panel({
+              title: 'FusionCharts Samples',
+              collapsible:true,
+              renderTo: 'chartsDiv',              
+              width: 587,
+              height: 527,
+              items: [tabbedChart]
+          });
+                             
+      });
+      
+    </script>    
+  </head>
+  <body>
+    <div id="popup-win" class="x-hidden"></div>
+    <div style="margin: 15px;" id="chartsDiv"></div>
+    <div style="margin-left: 15px;">
+      These FusionChart samples are generated from code on the server using the 
+      <a href="http://svn.lom.med.va.gov/repos/jee/trunk/ll-reportUtils/" target="_blank">ReportUtils</a> framework.<br><br>
+      All chart properties, including the chart type, height, width, as well as the chart data are generated<br>
+      by a <a href="http://svn.lom.med.va.gov/repos/jee/trunk/ll-reportUtils/ll-reportUtils-war/src/main/java/gov/va/med/lom/charts/sample/action/SampleChartAction.java" target="_blank">Struts action class</a>
+      which extends <a href="http://svn.lom.med.va.gov/repos/jee/trunk/ll-reportUtils/ll-reportUtils-jar/src/main/java/gov/va/med/lom/charts/struts/action/BaseChartsAction.java" target="_blank">BaseChartsAction</a>.<br><br>
+      Since the server-side code takes care of the chart configuration, this makes the client-side code very simple.<br><br>
+      For more on FusionCharts, see the following:<br><br>
+      <a href="http://www.fusioncharts.com/gallery/" target="_blank">Chart Gallery</a><br>
+      <a href="http://www.fusioncharts.com/OnlineDocs.asp" target="_blank">Documentation</a><br>
+      <a href="http://www.fusioncharts.com/demos/" target="_blank">Demos</a>
+    </div>
+  </body>
+</html>

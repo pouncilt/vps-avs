@@ -1,0 +1,65 @@
+/**
+ * Wallet wallet.css
+ */
+
+#wallet-wrapper {
+	background:#ddd;
+	padding:20px;
+    text-align: center;
+}
+#wallet {
+	margin:0 auto;
+	border:1px solid #222;
+	background:#fff;
+	width:7.80in;
+    text-align: left;
+}
+#wallet-contents {
+	margin:0.15in;
+	font-family: Tahoma, Arial, Verdana, sans-serif;
+}
+#wallet-contents div.med-category {
+    text-decoration:underline;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#wallet-header-left {
+	overflow:hidden;
+	zoom:1;
+    text-align:left;
+}
+#wallet-header-center {
+	overflow:hidden;
+	zoom:1;
+    text-align:center;
+}
+#wallet-contents div.section-body {
+    margin-top:15px;
+}
+#wallet-contents div.leftcol {
+    width: 3.65in;
+    float: left;
+}
+#wallet-contents div.rightcol {
+    margin-left: 3.85in;
+    width: 3.65in;
+}
+#wallet-contents div.med-name {
+	font-weight:bold;
+    padding-top: 5px;
+}
+#wallet-contents div.med-detail {
+	padding-left: 20px;
+}
+.normalFont {
+    font-size:10pt;
+}
+.largeFont {
+    font-size:12pt;
+}
+.veryLargeFont {
+    font-size:14pt;
+}
+
+
+

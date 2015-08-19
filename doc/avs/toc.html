@@ -1,0 +1,445 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+	<title>After Visit Summary- Table of Contents</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc">
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/silver-theme/jquery-ui-1.8.12.custom.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/dynatree/chm/ui.dynatree.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="css/toc.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#tabs .ui-widget-header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.dynatree.min.js"></script>
+	<script type="text/javascript" src="js/hndjsse.js"></script>
+	<script type="text/javascript">
+	
+		var bSearchDataLoaded = false;
+		var sHelpIdToActivate = '';
+	
+		$(document).ready(function()
+		{
+			var sAnchorName = top.location.href.substring(top.location.href.lastIndexOf("#") + 1, top.location.href.length);
+			var nSelectedTab = 0;
+			if (sAnchorName == '_index') nSelectedTab = 1
+			else if (sAnchorName == '_search') nSelectedTab = 2;			
+			$("#tabs").tabs({
+				selected: nSelectedTab,
+				select: function(event, ui) { HideKwPopup(); }
+			});
+			
+			// Toc
+			$("#tab-toc").dynatree({
+				clickFolderMode: 1,
+				debugLevel: 0,
+				imagePath: 'css/dynatree/chm/',
+				onActivate: function(node){
+					if ($("#tab-keywords") && $("#tab-keywords").dynatree && $("#tab-keywords").dynatree("getTree") && $("#tab-keywords").dynatree("getTree").activateKey)
+						$("#tab-keywords").dynatree("getTree").activateKey(null);
+					if(node.data.href && node.data.href != '#'){
+						window.open(node.data.href, node.data.target);
+					}
+				}
+			});
+			// Expand all nodes if required
+			$("#tab-toc").dynatree("getRoot").visit(function(node){
+					node.expand(true);
+				});
+			// Select the active help id
+			if (sHelpIdToActivate != '') $("#tab-toc").dynatree("getTree").activateKey(sHelpIdToActivate);
+			
+			// Keywords
+			$("#tab-keywords").dynatree({
+				clickFolderMode: 1,
+				debugLevel: 0,
+				imagePath: 'css/dynatree/chm/',
+				onClick: function(node, event){
+					HideKwPopup();
+					if (node.data && node.data.click)
+					{
+						var aRefList = null;
+						eval('aRefList=' + node.data.click);
+						if (ShowKwPopup(node.li, aRefList))
+						{
+							if ($("#tab-toc") && $("#tab-toc").dynatree && $("#tab-toc").dynatree("getTree") && $("#tab-toc").dynatree("getTree").activateKey)
+								$("#tab-toc").dynatree("getTree").activateKey(null);
+							if(node.data.href && node.data.href != '#'){
+								window.open(node.data.href, node.data.target);
+							}
+						}
+					}
+				}
+			});
+			// Expand all nodes if required
+			$("#tab-keywords").dynatree("getRoot").visit(function(node){
+					node.expand(true);
+				});
+			// Load search data
+			$.getScript("js/searchdata.js",	function() {
+				bSearchDataLoaded = true;
+			});
+		});
+		
+		$('body').click(function() {
+			HideKwPopup();
+		});
+		
+		function SelectTocItem(sHelpId)
+		{
+			if ($("#tab-toc") && $("#tab-toc").dynatree && $("#tab-toc").dynatree("getTree") && $("#tab-toc").dynatree("getTree").getNodeByKey) {
+				$("#tab-toc").dynatree("getTree").getNodeByKey(sHelpId).activateSilently();
+			}
+			else {
+				sHelpIdToActivate = sHelpId;
+			}
+		}
+		
+		function HideKwPopup()
+		{
+			if($("#popupMenu")) $("#popupMenu").remove();
+		}
+		
+		function ShowKwPopup(oSender, aLinks)
+		{
+			HideKwPopup();
+			if (!aLinks || !aLinks.length || aLinks.length == 0) return false
+			else if (aLinks.length == 1) return true
+			else
+			{
+				var oParentDiv = document.createElement("DIV");
+				oParentDiv.id = "popupMenu";
+				var oLink = null;
+				for (var nCnt=0; nCnt<aLinks.length; nCnt++)
+				{
+					oLink = document.createElement("A");
+					oLink.innerHTML = aLinks[nCnt][0];
+					oLink.href = aLinks[nCnt][1];
+					oLink.target = "FrameMain";
+					oLink.onclick = HideKwPopup;
+					oParentDiv.appendChild(oLink);
+				}
+				document.body.appendChild(oParentDiv);
+				var pos = $(oSender).offset(); 
+				var height = $(oSender).height();
+				$(oParentDiv).css({
+					"left": (pos.left+20) + "px",
+					"top": (pos.top + height + 5) + "px"
+				});
+				$(oParentDiv).show();
+				return false;
+			}
+		}
+		
+		function PerformSearch()
+		{
+			sValue = $("#search_value").val();
+			$("#search_results").html('Searching...');
+			var oSearchEngine = new HndJsSe;
+			oSearchEngine.ParseInput(sValue);			
+			oSearchEngine.PerformSearch();
+			if (!oSearchEngine.aResults || !oSearchEngine.aResults.length)
+			{
+				$("#search_results").html('No results found.');
+			}
+			else
+			{
+				$("#search_results").html('<div id="search_results_content"></div>');
+				var oUl = $("#search_results_content").append("<ul id='lr'></ul>").find("ul");
+				for (var nCnt = 0; nCnt < oSearchEngine.aResults.length; nCnt++)
+				{
+					oUl.append("<li><a href='" + aTl[oSearchEngine.aResults[nCnt]][0] + "?search=" + escape(sValue) + "' target='FrameMain'>" + unescape(aTl[oSearchEngine.aResults[nCnt]][1]) + "</a></li>");
+				}
+				// Tree
+				$("#search_results_content").dynatree({
+					clickFolderMode: 1,
+					debugLevel: 0,
+					imagePath: 'css/dynatree/chm/',
+					onActivate: function(node){
+						if ($("#search_results_content") && $("#search_results_content").dynatree && $("#search_results_content").dynatree("getTree") && $("#search_results_content").dynatree("getTree").activateKey)
+							$("#search_results_content").dynatree("getTree").activateKey(null);
+						if(node.data.href && node.data.href != '#'){
+							window.open(node.data.href, node.data.target);
+						}
+					}
+				});
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tab-toc">Contents</a></li>
+			<li><a href="#tab-keywords">Index</a></li>
+			<li><a href="#tab-search">Search</a></li>
+			</ul>
+		<div id="tab-toc">
+			<ul id="toc" class="">
+
+				<li class="folder" id="Introduction" data="">
+							<a
+							href="Introduction.html"
+							target="FrameMain">
+								Introduction</a>
+
+				<ul><li class="" id="Welcome" data="">
+							<a
+							href="Welcome.html"
+							target="FrameMain">
+								Welcome</a>
+
+				</li><li class="" id="Introduction1" data="">
+							<a
+							href="Introduction1.html"
+							target="FrameMain">
+								Introduction</a>
+
+				</li><li class="" id="Purpose" data="">
+							<a
+							href="Purpose.html"
+							target="FrameMain">
+								Purpose</a>
+
+				</li><li class="" id="FeatureSummary" data="">
+							<a
+							href="FeatureSummary.html"
+							target="FrameMain">
+								Feature Summary</a>
+
+				</li></ul></li><li class="folder" id="GettingStarted" data="">
+							<a
+							href="GettingStarted.html"
+							target="FrameMain">
+								Getting Started</a>
+
+				<ul><li class="" id="AVSWorkflow" data="">
+							<a
+							href="AVSWorkflow.html"
+							target="FrameMain">
+								AVS Workflow</a>
+
+				</li><li class="" id="LaunchingtheAVS" data="">
+							<a
+							href="LaunchingtheAVS.html"
+							target="FrameMain">
+								Launching the AVS</a>
+
+				</li><li class="" id="ViewofAVSatLaunch" data="">
+							<a
+							href="ViewofAVSatLaunch.html"
+							target="FrameMain">
+								View of AVS at Launch</a>
+
+				</li><li class="" id="VisitSelection" data="">
+							<a
+							href="VisitSelection.html"
+							target="FrameMain">
+								Visit Selection</a>
+
+				</li><li class="" id="ExampleAVS" data="">
+							<a
+							href="ExampleAVS.html"
+							target="FrameMain">
+								Example AVS</a>
+
+				</li></ul></li><li class="folder" id="AVSSections" data="icon: '1.png'">
+							<a
+							href="AVSSections.html"
+							target="FrameMain">
+								AVS Sections</a>
+
+				<ul><li class="" id="Header" data="">
+							<a
+							href="Header.html"
+							target="FrameMain">
+								Header</a>
+
+				</li><li class="" id="VisitInfoDiagnosesVitalsImmuniza" data="">
+							<a
+							href="VisitInfoDiagnosesVitalsImmuniza.html"
+							target="FrameMain">
+								Visit Info, Diagnoses, Vitals, Immunizations</a>
+
+				</li><li class="" id="NewOrders" data="">
+							<a
+							href="NewOrders.html"
+							target="FrameMain">
+								New Orders</a>
+
+				</li><li class="" id="Appointments" data="">
+							<a
+							href="Appointments.html"
+							target="FrameMain">
+								Appointments</a>
+
+				</li><li class="" id="Instructions" data="">
+							<a
+							href="Instructions.html"
+							target="FrameMain">
+								Instructions</a>
+
+				</li><li class="" id="PrimaryCareTeam" data="">
+							<a
+							href="PrimaryCareTeam.html"
+							target="FrameMain">
+								Primary Care Team</a>
+
+				</li><li class="" id="AllergiesandLocalVAMeds" data="">
+							<a
+							href="AllergiesandLocalVAMeds.html"
+							target="FrameMain">
+								Allergies and Local VA Meds</a>
+
+				</li><li class="" id="NonVAMedications" data="">
+							<a
+							href="NonVAMedications.html"
+							target="FrameMain">
+								Non-VA Medications</a>
+
+				</li><li class="" id="RemoteVAMedications" data="">
+							<a
+							href="RemoteVAMedications.html"
+							target="FrameMain">
+								Remote VA Medications</a>
+
+				</li><li class="" id="LabResults" data="">
+							<a
+							href="LabResults.html"
+							target="FrameMain">
+								Lab Results</a>
+
+				</li><li class="" id="ClinicalCharts" data="">
+							<a
+							href="ClinicalCharts.html"
+							target="FrameMain">
+								Clinical Charts</a>
+
+				</li><li class="" id="Footer" data="">
+							<a
+							href="Footer.html"
+							target="FrameMain">
+								Footer</a>
+
+				</li><li class="" id="TogglingSections" data="">
+							<a
+							href="TogglingSections.html"
+							target="FrameMain">
+								Toggling Sections</a>
+
+				</li></ul></li><li class="folder" id="AVSFunctionality" data="icon: '1.png'">
+							<a
+							href="AVSFunctionality.html"
+							target="FrameMain">
+								AVS Functionality</a>
+
+				<ul><li class="" id="MedicationReconciliation" data="">
+							<a
+							href="MedicationReconciliation.html"
+							target="FrameMain">
+								Medication Reconciliation</a>
+
+				</li><li class="" id="PatientInstructions" data="">
+							<a
+							href="PatientInstructions.html"
+							target="FrameMain">
+								Patient Instructions</a>
+
+				</li><li class="" id="EditAVS" data="">
+							<a
+							href="EditAVS.html"
+							target="FrameMain">
+								Edit AVS</a>
+
+				</li><li class="" id="FontSize" data="">
+							<a
+							href="FontSize.html"
+							target="FrameMain">
+								Font Size</a>
+
+				</li><li class="" id="ClinicalServicesInformation" data="">
+							<a
+							href="ClinicalServicesInformation.html"
+							target="FrameMain">
+								Clinical Services Information</a>
+
+				</li><li class="" id="KramesOnDemand" data="">
+							<a
+							href="KramesOnDemand.html"
+							target="FrameMain">
+								Krames On Demand</a>
+
+				</li><li class="" id="Printing" data="">
+							<a
+							href="Printing.html"
+							target="FrameMain">
+								Printing</a>
+
+				</li><li class="" id="StubNoteandVistAImaging" data="">
+							<a
+							href="StubNoteandVistAImaging.html"
+							target="FrameMain">
+								Stub Note and VistA Imaging</a>
+
+				</li><li class="" id="PDF" data="">
+							<a
+							href="PDF.html"
+							target="FrameMain">
+								PDF</a>
+
+				</li><li class="" id="AdminSettings" data="">
+							<a
+							href="AdminSettings.html"
+							target="FrameMain">
+								Admin Settings</a>
+
+				</li></ul></li><li class="" id="TestingChecklist" data="">
+							<a
+							href="TestingChecklist.html"
+							target="FrameMain">
+								Testing Checklist</a>
+
+				</li><li class="" id="Installation" data="">
+							<a
+							href="Installation.html"
+							target="FrameMain">
+								Installation</a>
+
+				</li></ul>
+		</div>
+		
+		<div id="tab-keywords">
+			<ul id="keywords">
+
+				</ul>
+		</div>
+		
+		<div id="tab-search">
+			<form onsubmit="PerformSearch(); return false;">
+				<label for="search_value">Search:</label>
+				<input id="search_value" name="search_value"></input>
+				<input type="submit" value="Search"/>
+			</form>
+			<div id="search_results"></div>
+		</div>
+		
+		</div>
+    
+</body>
+
+</html>
+

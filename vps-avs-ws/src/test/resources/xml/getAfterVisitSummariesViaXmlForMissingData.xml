@@ -1,0 +1,29 @@
+Request:
+curl -k -i -X GET -H "Content-Type: application/xml" -H "Accepts: application/xml" -d '<AfterVisitSummarySearchRequest><afterVisitSummarySearchCriteria><veteranId>30</veteranId><startDate>2014-03-01</startDate><endDate>2015-07-28</endDate></afterVisitSummarySearchCriteria></AfterVisitSummarySearchRequest>' "http://localhost:8080/vps-avs-ws/service/afterVisitSummaries.xml?clientId=12345&veteranId=30"
+
+Response:
+Response Header:
+HTTP/1.1 500 Internal Server Error
+Server: Apache-Coyote/1.1
+X-Powered-By: Servlet/3.0; JBossAS-6
+Content-Type: application/xml
+Transfer-Encoding: chunked
+Date: Thu, 25 Jun 2015 17:33:59 GMT
+Connection: close
+
+Response Body:
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<WebServiceResponse>
+    <status>
+        <messages>
+            <message>Could not read [class gov.va.med.avs.model.AfterVisitSummarySearchRequest]; nested exception is
+                org.springframework.oxm.UnmarshallingFailureException: JAXB unmarshalling exception; nested exception is
+                javax.xml.bind.UnmarshalException
+                - with linked exception:
+                [org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 77; cvc-complex-type.2.4.a: Invalid content
+                was found starting with element 'veteranId'. One of '{clientId}' is expected.]
+            </message>
+        </messages>
+        <requestStatus>Failure</requestStatus>
+    </status>
+</WebServiceResponse>

@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">     
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    
+    <!--[if IE 8]>
+       <script type="text/javascript">
+         window.extUserAgent = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0)';
+       </script>
+    <![endif]-->
+    <!--[if IE 7]>
+       <script type="text/javascript">
+         window.extUserAgent = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)';
+       </script>
+    <![endif]-->
+    <!--[if IE 6]>
+       <script type="text/javascript">
+         window.extUserAgent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 6.0)';
+       </script>
+    <![endif]-->    
+    
+    <title>Sample Reports</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="/ext/resources/css/ext-all.css" /> 
+    <link rel="stylesheet" type="text/css" href="/reportutils/css/reportsgrid.css" />     
+    <link rel="stylesheet" type="text/css" href="/reportutils/js/gridfilters/css/GridFilters.css" /> 
+    <link rel="stylesheet" type="text/css" href="/reportutils/js/gridfilters/css/RangeMenu.css" />    
+    <link rel="stylesheet" type="text/css" href="/reportutils/css/PanelResizer.css" />
+    
+    <style type="text/css">
+      body {
+      	color: #000000;
+      	background-color: white;
+      	margin: 0px
+      }
+      
+    </style>    
+        
+    <!-- Scripts -->  
+    <script type="text/javascript" src="/ext/ext-base.js"></script>
+    <script type="text/javascript" src="/ext/ext-all.js"></script>  
+    <script type="text/javascript" src="/ux/ext-basex.js"></script> 
+    <script type="text/javascript" src="/reportutils/js/gridfilters/GridFilters.js"></script>  
+    <script type="text/javascript" src="/reportutils/js/gridfilters/filter/Filter.js"></script>  
+    <script type="text/javascript" src="/reportutils/js/gridfilters/filter/StringFilter.js"></script>  
+    <script type="text/javascript" src="/reportutils/js/gridfilters/filter/DateFilter.js"></script>  
+    <script type="text/javascript" src="/reportutils/js/gridfilters/filter/ListFilter.js"></script>  
+    <script type="text/javascript" src="/reportutils/js/gridfilters/filter/NumericFilter.js"></script>  
+    <script type="text/javascript" src="/reportutils/js/gridfilters/filter/BooleanFilter.js"></script>
+    <script type="text/javascript" src="/reportutils/js/gridfilters/menu/ListMenu.js"></script>
+    <script type="text/javascript" src="/reportutils/js/gridfilters/menu/RangeMenu.js"></script>
+    <script type="text/javascript" src="/reportutils/js/gridfilters/menu/RangeMenu.js"></script>
+    <script type="text/javascript" src="/reportutils/js/reportsgrid.js"></script>
+    <script type="text/javascript" src="/reportutils/js/PanelResizer.js"></script>  
+    <script type="text/javascript" src="/reportutils/js/RowExpander.js"></script>     
+    
+    <script type="text/javascript">
+                                  
+      Ext.onReady(function() {
+          Ext.QuickTips.init();   
+          Ext.ns('Sample.Reports');         
+          
+          var sampleReportGrid1;
+          var sampleReportGrid2;
+          
+          Sample.Reports.TopToolbar = Ext.extend(Ext.Toolbar,
+             
+              (function() {
+                                   
+                  return {
+                                
+                      initComponent: function() {
+                                             
+                          me = this;
+                                                
+                          var config = {
+                              id: 'TopToolbar',
+                              items: [
+                                  new Ext.Button( {
+                                      text:'&nbsp;Print Report',
+                                      id: 'PrintReport',
+                                      width: 100,
+                                      icon: '/reportutils/images/print.gif',
+                                      handler: function() { 
+                                          sampleReportGrid1.printReport();
+                                      }                                             
+                                  }),         
+                                  new Ext.form.Label( {
+                                      html: "&nbsp;"
+                                  }), 
+                                  '-',
+                                  new Ext.form.Label( {
+                                      html: "&nbsp;"
+                                  }), 
+                                  new Ext.Button({
+                                      text:'&nbsp;Export Report',
+                                      id: 'ExportReport',
+                                      width: 100,
+                                      icon: '/reportutils/images/export.png',
+                                      handler: function() { 
+                                          sampleReportGrid1.exportReport('csv');
+                                      }                                                                   
+                                  }),
+                                  new Ext.form.Label( {
+                                      html: "&nbsp;"
+                                  })                         
+                              ]
+                          };
+                          Ext.apply(this, Ext.apply(this.initialConfig, config));
+                          Sample.Reports.TopToolbar.superclass.initComponent.apply(this, arguments);
+                      }                            
+                  };
+              }())
+                    
+          );     
+          
+          // load the second grid after the first has loaded
+          var onSampleReportGrid1Loaded = function() {
+              sampleReportGrid2.loadReport('report2');
+          }          
+          
+          sampleReportGrid1 = new LLVA.ReportsGrid.Report({
+              id: 'sampleReport1',
+              dataUrl: '/reportutils/w/reports/sampleReport.action',
+              autoLoadReport: true,
+              frame: true,
+              border: true,
+              width: 500,
+              height: 300,
+              stripeRows: true,
+              columnLines: true,
+              showRowNumbers: false,
+              loadMask: true,
+              trackMouseOver: true,
+              disableSelection: true,
+              tbar: new Sample.Reports.TopToolbar(),
+              showBottomToolbar: false,
+              showFooterToolbar: false,              
+              showHeader: true,
+              resizeable: true,   
+              renderEl: 'sampleReport1', 
+              reports: [
+                  ["report1","Sample Report 1"]
+              ],
+              defaultReport: 'report1',
+              onDataLoadedCallback: onSampleReportGrid1Loaded              
+          });  
+
+          sampleReportGrid2 = new LLVA.ReportsGrid.Report({
+              id: 'sampleReport2',
+              dataUrl: '/reportutils/w/reports/sampleReport.action',
+              autoLoadReport: false,
+              frame: true,
+              border: true,
+              width: 500,
+              height: 300,
+              stripeRows: true,
+              columnLines: true,
+              showRowNumbers: true,
+              loadMask: true,
+              trackMouseOver: true,
+              disableSelection: true,
+              showTopToolbar: false,
+              showBottomToolbar: false,
+              showFooterToolbar: false,              
+              showHeader: true,
+              resizeable: true, 
+              renderEl: 'sampleReport2',    
+              reports: [
+                  ["report2","Sample Report 2"]
+              ]                            
+          });  
+          
+      });
+      
+    </script>    
+  </head>
+  <body topmargin="0" leftmargin="0" oncontextmenu="return false;">
+    <div id="sampleReport1" style="margin: 15px;"></div>
+    <div id="sampleReport2" style="margin: 15px;"></div>
+  </body>
+</html>

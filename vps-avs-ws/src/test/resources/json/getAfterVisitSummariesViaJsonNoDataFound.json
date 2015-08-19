@@ -1,0 +1,21 @@
+curl -k -i -X GET -H "Content-Type: application/json" -H "Accepts: application/json" -d '<AfterVisitSummarySearchRequest><afterVisitSummarySearchCriteria><veteranId>18</veteranId><startDate>2015-03-01</startDate><endDate>2015-02-28</endDate></afterVisitSummarySearchCriteria></AfterVisitSummarySearchRequest>' "http://localhost:8080/vps-avs-ws/service/afterVisitSummaries.json?clientId=12345&veteranId=18"
+
+
+HTTP/1.1 500 Internal Server Error
+Server: Apache-Coyote/1.1
+X-Powered-By: Servlet/3.0; JBossAS-6
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Thu, 25 Jun 2015 15:49:15 GMT
+Connection: close
+
+
+{
+  "status": {
+    "messages": [
+      "Could not read JSON: Unexpected character ('<' (code 60)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: java.io.PushbackInputStream@6dfc90b7; line: 1, column: 2]; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('<' (code 60)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')\n at [Source: java.io.PushbackInputStream@6dfc90b7; line: 1, column: 2]"
+    ],
+    "requestStatus": "Failure"
+  },
+  "payload": null
+}

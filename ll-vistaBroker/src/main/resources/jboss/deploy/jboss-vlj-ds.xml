@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<connection-factories>
+    <no-tx-connection-factory>
+    <rar-name>vljConnector-1.6.0.028.rar</rar-name>
+      <connection-definition>javax.resource.cci.ConnectionFactory</connection-definition>
+        <jndi-name>vlj/testconnector</jndi-name>
+        <adapter-display-name>VistaLinkAdapter</adapter-display-name>
+
+        <!-- example of how to if needed later
+        <config-property name="hostIPAddress" type="java.lang.String">10.1.19.10</config-property>
+        -->
+        <config-property name="connectorJndiName" type="java.lang.String">vlj/testconnector</config-property>
+
+        <!--pooling parameters-->
+        <min-pool-size>5</min-pool-size>
+        <max-pool-size>25</max-pool-size>
+            <!-- blocking-timeout-millis: This element specifies the maximum 
+                time in milliseconds to block while waiting for a connection 
+                before throwing an exception. Note that this blocks only while 
+                waiting for a permit for a connection, and will never throw 
+                an exception if creating a new connection takes an
+                inordinately long time. The default is 5000. -->
+        <blocking-timeout-millis>5000</blocking-timeout-millis>
+            <!-- idle-timeout-minutes: This element specifies the maximum 
+                time in minutes a connection may be idle before being closed. 
+                The actual maximum time depends also on the IdleRemover 
+                scan time, which is 1/2 the smallest idle-timeout-minutes 
+                of any pool. -->
+        <idle-timeout-minutes>15</idle-timeout-minutes>
+    </no-tx-connection-factory>
+    
+</connection-factories>
+

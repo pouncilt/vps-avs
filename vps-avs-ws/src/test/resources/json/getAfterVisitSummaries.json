@@ -1,0 +1,113 @@
+Request:
+curl -k -i -X GET -H "Content-Type: application/json" -H "Accepts: application/json" -d '{"afterVisitSummarySearchCriteria": {"clientId":"12345","veteranId": "18","startDate":"2015-05-01","endDate":"2015-07-28"}}' "http://localhost:8080/vps-avs-ws/service/afterVisitSummaries.json?clientId=12345&veteranId=18"
+
+
+Response:
+Response Header:
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+X-Powered-By: Servlet/3.0; JBossAS-6
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Thu, 25 Jun 2015 16:14:09 GMT
+
+
+Response Body:
+{
+  "status": {
+    "messages": [],
+    "requestStatus": "Successful"
+  },
+  "payload": {
+    "afterVisitSummaries": [
+      {
+        "id": "193",
+        "veteranId": "18",
+        "fileName": "ZZ000000000193.PDF",
+        "createdBy": "CPRSSUPER,REG",
+        "createdDate": "2015-05-14",
+        "binaryPDF": null
+      },
+      {
+        "id": "194",
+        "veteranId": "18",
+        "fileName": "ZZ000000000194.PDF",
+        "createdBy": "CPRSSUPER,REG",
+        "createdDate": "2015-05-14",
+        "binaryPDF": null
+      },
+      {
+        "id": "195",
+        "veteranId": "18",
+        "fileName": "ZZ000000000195.PDF",
+        "createdBy": "CPRSSUPER,REG",
+        "createdDate": "2015-05-14",
+        "binaryPDF": null
+      },
+      {
+        "id": "211",
+        "veteranId": "18",
+        "fileName": "ZZ000000000211.PDF",
+        "createdBy": "CPRSSUPER,REG",
+        "createdDate": "2015-05-14",
+        "binaryPDF": null
+      },
+      {
+        "id": "212",
+        "veteranId": "18",
+        "fileName": "ZZ000000000212.PDF",
+        "createdBy": "CPRSSUPER,REG",
+        "createdDate": "2015-05-14",
+        "binaryPDF": null
+      },
+      {
+        "id": "248",
+        "veteranId": "18",
+        "fileName": "ZZ000000000248.PDF",
+        "createdBy": "CPRSSUPER,REG",
+        "createdDate": "2015-05-29",
+        "binaryPDF": null
+      },
+      {
+        "id": "292",
+        "veteranId": "18",
+        "fileName": "ZZ000000000292.PDF",
+        "createdBy": "CPRSSUPER,REG",
+        "createdDate": "2015-05-30",
+        "binaryPDF": null
+      },
+      {
+        "id": "293",
+        "veteranId": "18",
+        "fileName": "ZZ000000000293.PDF",
+        "createdBy": "CPRSSUPER,REG",
+        "createdDate": "2015-05-30",
+        "binaryPDF": null
+      },
+      {
+        "id": "297",
+        "veteranId": "18",
+        "fileName": "ZZ000000000297.PDF",
+        "createdBy": "CPRSSUPER,REG",
+        "createdDate": "2015-06-01",
+        "binaryPDF": null
+      },
+      {
+        "id": "324",
+        "veteranId": "18",
+        "fileName": "ZZ000000000324.PDF",
+        "createdBy": "CPRSSUPER,REG",
+        "createdDate": "2015-06-22",
+        "binaryPDF": null
+      },
+      {
+        "id": "325",
+        "veteranId": "18",
+        "fileName": "ZZ000000000325.PDF",
+        "createdBy": "CPRSSUPER,REG",
+        "createdDate": "2015-06-24",
+        "binaryPDF": null
+      }
+    ]
+  }
+}

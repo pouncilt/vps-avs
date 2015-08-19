@@ -1,0 +1,49 @@
+body {
+    margin: 5;
+}
+
+#print {
+	display: none;
+}
+
+/* ui - whitespace around outer window */
+#ui {
+	margin: 5px;
+}
+
+.x-infofield {
+	padding-bottom: 3px;
+	font-weight: bold;
+	color: #003399;
+	font-size: 11px
+}
+
+.x-statusfield {
+	padding-bottom: 3px;
+	font-weight: normal;
+    font-style: italic;
+	color: #003399;
+	font-size: 11px
+}
+
+.no-leaf-icons .x-tree-icon-leaf {
+    display: none !important;
+}
+
+#encounter span.date {
+    font-size:1.2em;
+}
+#encounter span.location {
+    font-size:1.1em;
+	font-weight:bold;
+}
+#encounter span.datetime {
+    font-size:1.1em;
+	padding: 5px 0 2px 50px;
+    display:block;
+}
+#encounter span.status {
+	font-size:1.1em;
+	padding: 0 0 5px 50px;
+    display:block;
+}

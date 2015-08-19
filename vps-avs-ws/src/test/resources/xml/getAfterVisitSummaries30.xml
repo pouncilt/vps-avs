@@ -1,0 +1,31 @@
+Request:
+curl -k -i -X GET -H "Content-Type: application/xml" -H "Accepts: application/xml" -d '<AfterVisitSummarySearchRequest><afterVisitSummarySearchCriteria><clientId>12345</clientId><veteranId>30</veteranId><startDate>2014-03-01</startDate><endDate>2015-07-28</endDate></afterVisitSummarySearchCriteria></AfterVisitSummarySearchRequest>' "http://localhost:8080/vps-avs-ws/service/afterVisitSummaries.xml?clientId=12345&veteranId=30"
+
+Response:
+Rsponse Header:
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+X-Powered-By: Servlet/3.0; JBossAS-6
+Content-Type: application/xml
+Transfer-Encoding: chunked
+Date: Thu, 25 Jun 2015 17:14:50 GMT
+
+Response Body:
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<WebServiceCollectionResponse>
+    <status>
+        <messages/>
+        <requestStatus>Successful</requestStatus>
+    </status>
+    <payload>
+        <afterVisitSummaries>
+            <afterVisitSummary>
+                <id>162</id>
+                <veteranId>30</veteranId>
+                <fileName>ZZ000000000162.PDF</fileName>
+                <createdBy>CPRSSUPER,REG</createdBy>
+                <createdDate>2015-05-14T10:22:00</createdDate>
+            </afterVisitSummary>
+        </afterVisitSummaries>
+    </payload>
+</WebServiceCollectionResponse>

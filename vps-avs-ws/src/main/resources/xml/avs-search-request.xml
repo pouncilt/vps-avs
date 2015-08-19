@@ -1,0 +1,27 @@
+<AfterVisitSummarySearchRequest>
+    <afterVisitSummarySearchCriteria>
+        <clientId>12345</clientId>
+        <veteranId>54321</veteranId>
+        <startDate>2008-09-28</startDate>
+        <endDate>2014-09-18</endDate>
+    </afterVisitSummarySearchCriteria>
+</AfterVisitSummarySearchRequest>
+<WebServiceResponse>
+    <status>
+        <messages>
+            <message>User friendly message.</message>
+        </messages>
+        <requestStatus>Successful</requestStatus>
+    </status>
+    <payload>
+        <afterVisitSummaries>
+            <afterVisitSummary>
+                <id>0</id>
+                <veteranId>1234</veteranId>
+                <fileName>After Visit Summary</fileName>
+                <description>After Visit Summary</description>
+                <createdDate>2015-02-12T09:19:34</createdDate>
+            </afterVisitSummary>
+        </afterVisitSummaries>
+    </payload>
+</WebServiceResponse>

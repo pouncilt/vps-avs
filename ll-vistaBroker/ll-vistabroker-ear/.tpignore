@@ -1,0 +1,9 @@
+# Lines that begin with #, like this one, are ignored.
+\.classpath
+\.project
+\.iml
+/\.idea/.*
+/\.settings/.*
+/target/.*
+/bin/.*
+/lib/.*

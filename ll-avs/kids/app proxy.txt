@@ -1,0 +1,26 @@
+Below are the steps involved in creating an Application Proxy User.  I'm assuming a name for this particular Application Proxy to be "AVS,PROXY".
+
+1.  Add "AVS,PROXY" to the NEW PERSON file (#200) as the unique name of the AVS Application Proxy User.
+
+2.  Set the USER CLASS field (#9.5) in the NEW PERSON file (#200) to "Application Proxy" for the AVS,PROXY Application Proxy User.
+
+3.  Assign the OR CPRS GUI CHART and DVBA CAPRI GUI menu options as the "B"-type Secondary menu options to the AVS,PROXY Application Proxy User.
+
+4.  Set the APP PROXY ALLOWED field (#.11) in the REMOTE PROCEDURE file (#8994) to "YES" for each of the following RPCs executed by the AVS,PROXY Application Proxy User:
+
+SC LISTER
+XWB GET VARIABLE VALUE
+
+Additionally, the Kernel Developer Guide contains the following criteria for creating an Application Proxy User:
+
+- The name added to the NEW PERSON file (#200) must be unique. 
+
+- It must have a user class of "Application Proxy," as defined in the USER CLASS file (#201) and pointed to by the USER CLASS field (#9.5) in the NEW PERSON file (#200). 
+
+- It must not have an Access or Verify code assigned to it. 
+
+- It must not have a Primary menu assigned to it. 
+
+- It must have one or more Secondary menu options assigned to it. 
+
+- The RPCs that the menu options reference must have the APP PROXY ALLOWED field (#.11) in the REMOTE PROCEDURE file (#8994) set to YES. 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>gov.va.med.lom</groupId>
+        <artifactId>vps-avs</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>gov.va.med.lom.reportUtils</groupId>
+    <artifactId>ll-reportUtils-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.3</version>
+    <modules>
+        <module>ll-reportUtils-jar</module>
+        <module>ll-reportUtils-static-web</module>
+    </modules>
+</project>
